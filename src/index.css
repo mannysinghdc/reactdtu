@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+    margin:0
+}
+
+/* :root{
+    --background-color : gray;
+    --forground-color : white;
+    --primary-color:black;
+    --secondary-color:white
+
+} */
+
+/* [theme="dark"]{
+    background-color: gray;
+    color:white;
+}
+
+body {
+    background-color: gray;
+    color:white;
+} */
+

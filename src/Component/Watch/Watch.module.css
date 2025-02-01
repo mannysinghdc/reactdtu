@@ -1,0 +1,14 @@
+.clock{
+    background-color: pink;
+    height: 100px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 20px;
+
+}
