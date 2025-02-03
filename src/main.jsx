@@ -18,6 +18,7 @@ import Login from './Component/Login/Login.jsx'
 import NotPage from './Component/404.jsx'
 import Home from './Component/Home.jsx'
 import Protect from './Component/Login/Protect.jsx'
+import Rgb from './Component/Color/Rgb.jsx'
 
 const router = createBrowserRouter([
   {
@@ -30,11 +31,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element:<Protect><Home/></Protect>
+        element: <Protect><Home /></Protect>
       },
       {
         path: "color",
         element: <Color />
+      },
+      {
+        path: "mixcolor",
+        element:<Protect><Rgb /></Protect> 
       },
       {
         path: "signUp",
@@ -46,11 +51,11 @@ const router = createBrowserRouter([
       },
       {
         path: "social",
-        element:<Protect><Social /></Protect> ,
+        element: <Protect><Social /></Protect>,
       },
       {
         path: "social/post",
-        element:<Protect> <PostList /></Protect>
+        element: <Protect> <PostList /></Protect>
 
       },
       {
@@ -60,7 +65,7 @@ const router = createBrowserRouter([
       },
       {
         path: "clock",
-        element:<Protect><Watch /></Protect> 
+        element: <Protect><Watch /></Protect>
       },
       {
         path: "todo",

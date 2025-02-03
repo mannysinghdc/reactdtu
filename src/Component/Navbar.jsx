@@ -7,6 +7,7 @@ import Clock from "./Todo/Clock";
 
 const Navbar = () => {
     const [color, setcolor] = useState(false) // dark and light mode
+    const dropProject=["Clock","Color", "MixColor","Image"]
 
     let navigate = useNavigate()
     const login = JSON.parse(localStorage.getItem("login-user" || "{}"))
@@ -49,19 +50,25 @@ const Navbar = () => {
                                         <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="/">Home</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="color">Color</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="clock">clock</NavLink>
-                                    </li>
-                                    <li className="nav-item">
                                         <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="todo">Todo</NavLink>
                                     </li>
                                     <li className="nav-item">
                                         <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="social">Social</NavLink>
                                     </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="image">Image</NavLink>
+
+                                    <li className="nav-item dropdown">
+                                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Project
+                                        </a>
+                                        <ul className="dropdown-menu">
+                                            {
+                                                dropProject.map((item)=>(
+                                                    <li key={item}><Link className="dropdown-item" to={item.toLocaleLowerCase()}>{item}</Link></li>
+                                                ))
+                                            }
+                                            {/* <li><Link className="dropdown-item" to="clock">Clock</Link></li>
+                                            <li><Link className="dropdown-item" to="image">Image</Link></li> */}
+                                        </ul>
                                     </li>
 
 
