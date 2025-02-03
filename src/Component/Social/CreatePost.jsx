@@ -15,6 +15,7 @@ const CreatePost = () => {
     setData({ ...data, [e.target.name]: e.target.value })
   }
 
+  // Submit Functionlity
   const submitHandler = (e) => {
     e.preventDefault()
 

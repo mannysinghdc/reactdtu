@@ -1,9 +1,20 @@
 import { Link } from "react-router-dom"
 import { MdNightlight, MdOutlineLightMode } from "react-icons/md"
 import { useEffect, useState } from "react"
+import { MDBBtn } from 'mdb-react-ui-kit';
+import { NavLink, useNavigate } from "react-router";
+import Clock from "./Todo/Clock";
 
 const Navbar = () => {
     const [color, setcolor] = useState(false) // dark and light mode
+
+    let navigate = useNavigate()
+    const login = JSON.parse(localStorage.getItem("login-user" || "{}"))
+
+    //Capital first letter function
+    const capitalizeFirstLetter = (word) => {
+        return String(word).charAt(0).toUpperCase() + String(word).slice(1);
+    }
 
     useEffect(() => {
         if (color) {
@@ -11,60 +22,84 @@ const Navbar = () => {
             document.querySelector("body").style.color = "white"
         } else {
             document.querySelector("body").style.backgroundColor = ""
-              document.querySelector("body").style.color = "gray"
+            document.querySelector("body").style.color = "gray"
         }
 
     }, [color])
     return (
         <>
+
             <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#cbf8f8" }}>
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
+                    <Link className="navbar-brand" to="/">
                         <img src="vite.svg" alt="image" />
-                    </a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="color">Color</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="clock">Clock</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="todo">Todo</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="social">Social</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="image">Image</Link>
-                            </li>
+                    </Link>
+                    {
+                        login?.flag && <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                    }
 
-                        </ul>
-                        {
-                            color ? <MdOutlineLightMode onClick={() => setcolor(!color)} style={{ cursor: "pointer" }} /> : <MdNightlight onClick={() => setcolor(!color)} style={{ cursor: "pointer" }} />
-                        }
-                        <ul className="navbar-nav">
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </a>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Name</a></li>
-                                    <li><a className="dropdown-item" href="#"> Profile</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href="#">Logout</a></li>
+                    {/* If user is logged in */}
+                    {
+                        login?.flag && (
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="/">Home</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="color">Color</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="clock">clock</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="todo">Todo</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="social">Social</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="image">Image</NavLink>
+                                    </li>
+
+
                                 </ul>
-                            </li>
-                        </ul>
+                                {/* Date & Time */}
+                                <div style={{ position: "relative", top: "8px", marginRight: "5px", color: color ? "gray" : "gray" }}>
+                                    <Clock />
+                                </div>
+                                {
+                                    color ? <MdOutlineLightMode title="Light mode" onClick={() => setcolor(!color)} style={{ cursor: "pointer", color: color ? "gray" : "gray" }} /> : <MdNightlight title="Dark mode" onClick={() => setcolor(!color)} style={{ cursor: "pointer" }} />
+                                }
+                                <ul className="navbar-nav">
+                                    <li className="nav-item dropdown">
+                                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Profile
+                                        </a>
+                                        <ul className="dropdown-menu" style={{ minWidth: "87px" }}>
+                                            <li><a className="dropdown-item" href="#"><span className="text-danger">{capitalizeFirstLetter(login.name)}</span></a></li>
+                                            <li><a className="dropdown-item" href="#"> Profile</a></li>
+                                            <li><hr className="dropdown-divider" /></li>
+                                            <li><a className="dropdown-item" href="#" onClick={() => { localStorage.removeItem("login-user"), navigate("login") }}>Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        )
+                    }
+                    {
+                        !login?.flag && <div>
+                            {
+                                color ? <MdOutlineLightMode title="Light mode" onClick={() => setcolor(!color)} style={{ cursor: "pointer", marginBottom: "5px", color: color ? "gray" : "gray" }} /> : <MdNightlight title="Dark mode" onClick={() => setcolor(!color)} style={{ cursor: "pointer", marginBottom: "5px" }} />
+                            }
+                            <MDBBtn rounded size='sm' className="mx-1" onClick={() => navigate("login")}>Login</MDBBtn>
+                            <MDBBtn rounded size='sm' onClick={() => navigate("signUp")}>SIGNUP</MDBBtn>
+                        </div>
+                    }
 
-                    </div>
+
                 </div>
             </nav>
         </>

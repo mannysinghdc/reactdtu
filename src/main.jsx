@@ -13,6 +13,11 @@ import Image from './Component/Image.jsx'
 import './index.css'
 import Color from './Component/Color/Color.jsx'
 import Watch from './Component/Watch/Watch.jsx'
+import SignUp from './Component/Login/SignUp.jsx'
+import Login from './Component/Login/Login.jsx'
+import NotPage from './Component/404.jsx'
+import Home from './Component/Home.jsx'
+import Protect from './Component/Login/Protect.jsx'
 
 const router = createBrowserRouter([
   {
@@ -20,36 +25,46 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
-        element: <h1>home</h1>
+        path: "*",
+        element: <NotPage />
       },
       {
-        path: "todo",
-        element: <Todo />
+        path: "/",
+        element:<Protect><Home/></Protect>
       },
       {
         path: "color",
         element: <Color />
       },
       {
+        path: "signUp",
+        element: <SignUp />
+      },
+      {
+        path: "login",
+        element: <Login />
+      },
+      {
         path: "social",
-        element: <Social />,
-
+        element:<Protect><Social /></Protect> ,
       },
       {
         path: "social/post",
-        element: <PostList />
+        element:<Protect> <PostList /></Protect>
 
       },
       {
         path: "image",
-        element: <Image />
+        element: <Protect><Image /></Protect>
 
       },
       {
         path: "clock",
-        element: <Watch />
-
+        element:<Protect><Watch /></Protect> 
+      },
+      {
+        path: "todo",
+        element: <Protect> <Todo /></Protect>
       },
 
     ]
