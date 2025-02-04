@@ -1,24 +1,27 @@
-import { StrictMode } from 'react'
+import { StrictMode, Suspense, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Todo from './Component/Todo/Todo.jsx'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css"
-import Social from './Component/Social/Social.jsx'
-import PostList from './Component/Social/PostList.jsx'
-import SocialContextProvider from './store/Social-Item.jsx'
-import Image from './Component/Image.jsx'
 
+
+// Lazy-loaded components
+const Home = lazy(() => import('./Component/Home.jsx'));
+const Todo = lazy(() => import('./Component/Todo/Todo.jsx'));
+const Social = lazy(() => import('./Component/Social/Social.jsx'));
+const Color = lazy(() => import('./Component/Color/Color.jsx'));
+const Rgb = lazy(() => import('./Component/Color/Rgb.jsx'));
+const PostList = lazy(() => import('./Component/Social/PostList.jsx'));
+const Image = lazy(() => import('./Component/Image.jsx'));
+const Watch = lazy(() => import('./Component/Watch/Watch.jsx'));
+const SignUp = lazy(() => import('./Component/Login/SignUp.jsx'));
+const Login = lazy(() => import('./Component/Login/Login.jsx'));
+const NotPage = lazy(() => import('./Component/404.jsx'));
+const Protect = lazy(() => import('./Component/Login/Protect.jsx'));
+const TextCounter = lazy(() => import('./Component/TextCounter/TextCounter.jsx'));
 import './index.css'
-import Color from './Component/Color/Color.jsx'
-import Watch from './Component/Watch/Watch.jsx'
-import SignUp from './Component/Login/SignUp.jsx'
-import Login from './Component/Login/Login.jsx'
-import NotPage from './Component/404.jsx'
-import Home from './Component/Home.jsx'
-import Protect from './Component/Login/Protect.jsx'
-import Rgb from './Component/Color/Rgb.jsx'
+import SocialContextProvider from './store/Social-Item.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,49 +30,53 @@ const router = createBrowserRouter([
     children: [
       {
         path: "*",
-        element: <NotPage />
+        element: <Protect> <Suspense fallback={"loading.."}><NotPage /></Suspense></Protect>
       },
       {
         path: "/",
-        element: <Protect><Home /></Protect>
+        element: <Protect> <Suspense fallback={"loading.."}><Home /></Suspense></Protect>
       },
       {
         path: "color",
-        element: <Color />
+        element: <Protect> <Suspense fallback={"loading.."}><Color /></Suspense></Protect>
       },
       {
         path: "mixcolor",
-        element:<Protect><Rgb /></Protect> 
+        element: <Protect> <Suspense fallback={"loading.."}><Rgb /></Suspense></Protect>
       },
       {
         path: "signUp",
-        element: <SignUp />
+        element: <Protect> <Suspense fallback={"loading.."}><SignUp /></Suspense></Protect>
       },
       {
         path: "login",
-        element: <Login />
+        element: <Protect> <Suspense fallback={"loading.."}><Login /></Suspense></Protect>
       },
       {
         path: "social",
-        element: <Protect><Social /></Protect>,
+        element: <Protect> <Suspense fallback={"loading.."}><Social /></Suspense></Protect>
       },
       {
         path: "social/post",
-        element: <Protect> <PostList /></Protect>
+        element: <Protect> <Suspense fallback={"loading.."}><PostList /></Suspense></Protect>
 
       },
       {
         path: "image",
-        element: <Protect><Image /></Protect>
+        element: <Protect> <Suspense fallback={"loading.."}><Image /></Suspense></Protect>
 
       },
       {
         path: "clock",
-        element: <Protect><Watch /></Protect>
+        element: <Protect> <Suspense fallback={"loading.."}><Watch /></Suspense></Protect>
       },
       {
         path: "todo",
-        element: <Protect> <Todo /></Protect>
+        element: <Protect> <Suspense fallback={"loading.."}><Todo /></Suspense></Protect>
+      },
+      {
+        path: "textcounter",
+        element: <Protect> <Suspense fallback={"loading.."}><TextCounter /></Suspense></Protect>
       },
 
     ]

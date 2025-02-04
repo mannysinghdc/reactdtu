@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "b43b",
+      "name": "manny",
+      "age": "23",
+      "email": "msmaninder702@gmail.com"
+    },
+    {
+      "id": "e6f4",
+      "name": "alina",
+      "age": "23",
+      "email": "kell@gmail.com"
+    },
+    {
+      "id": "1c1c",
+      "name": "manny8",
+      "age": "23",
+      "email": "manny2@gmail.com"
+    }
+  ]
+}

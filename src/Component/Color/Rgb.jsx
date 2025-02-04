@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 
 const Rgb = () => {
-
-
     const [r, setR] = useState( 0)
     const [g, setG] = useState( 0)
     const [b, setB] = useState( 0)

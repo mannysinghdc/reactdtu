@@ -7,7 +7,7 @@ import Clock from "./Todo/Clock";
 
 const Navbar = () => {
     const [color, setcolor] = useState(false) // dark and light mode
-    const dropProject=["Clock","Color", "MixColor","Image"]
+    const dropProject=["Clock","Color", "MixColor","Image","TextCounter"]
 
     let navigate = useNavigate()
     const login = JSON.parse(localStorage.getItem("login-user" || "{}"))
