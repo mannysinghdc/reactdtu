@@ -7,7 +7,7 @@ import Clock from "./Todo/Clock";
 
 const Navbar = () => {
     const [color, setcolor] = useState(false) // dark and light mode
-    const dropProject=["Clock","Color", "MixColor","Image","TextCounter"]
+    const dropProject = ["Clock", "Color", "MixColor", "Image", "TextCounter"]
 
     let navigate = useNavigate()
     const login = JSON.parse(localStorage.getItem("login-user" || "{}"))
@@ -53,6 +53,9 @@ const Navbar = () => {
                                         <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="todo">Todo</NavLink>
                                     </li>
                                     <li className="nav-item">
+                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="todojson">TodoJson</NavLink>
+                                    </li>
+                                    <li className="nav-item">
                                         <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="social">Social</NavLink>
                                     </li>
 
@@ -62,7 +65,7 @@ const Navbar = () => {
                                         </a>
                                         <ul className="dropdown-menu">
                                             {
-                                                dropProject.map((item)=>(
+                                                dropProject.map((item) => (
                                                     <li key={item}><Link className="dropdown-item" to={item.toLocaleLowerCase()}>{item}</Link></li>
                                                 ))
                                             }

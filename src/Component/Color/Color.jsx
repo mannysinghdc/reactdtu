@@ -14,6 +14,12 @@ const Color = () => {
         return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
     }
 
+    // const generateHexColor = () => {    // other way to genrate color code
+    //     return `#${Math.floor(100000+Math.random()*900000).toString()}`
+
+    //   }
+
+
     const updateRandomColor = () => {
         setClr(generateHexColor())
     }

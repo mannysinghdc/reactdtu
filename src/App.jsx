@@ -1,15 +1,16 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "./Component/Navbar"
-import { lazy, useState } from "react"
-const Lazy = lazy(() => import("./Component/Lazy")) 
+import { useEffect, useState } from "react"
+import Testing from "./Component/Testing"
 
 
 const App = () => {
 
+
   return (
     <>
-
       <Navbar />
+      {/* <Testing/> */}
       <Outlet />
     </>
   )
