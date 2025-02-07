@@ -12,7 +12,7 @@ import Loader from './Component/Loader.jsx/Loader.jsx';
 // Lazy-loaded components
 const Home = lazy(() => import('./Component/Home.jsx'));
 const Todo = lazy(() => import('./Component/Todo/Todo.jsx'));
-const TodoJson = lazy(() => import('./Component/JSON/TodoJson.jsx'));
+const TodoJson = lazy(() => import('./Component/JSON/TodoJson.jsx'))
 const Social = lazy(() => import('./Component/Social/Social.jsx'));
 const Color = lazy(() => import('./Component/Color/Color.jsx'));
 const Rgb = lazy(() => import('./Component/Color/Rgb.jsx'));
@@ -72,10 +72,10 @@ const router = createBrowserRouter([
       },
       {
         path: "todo",
-        element: <Protect> <Suspense fallback={<Loader />}><Todo /></Suspense></Protect>
+        element: <Protect> <Suspense fallback={<Loader />}><Todo /></Suspense></Protect>             
       },
       {
-        path: "todojson",
+        path: "todojson",                                                                            
         element: <Protect> <Suspense fallback={<Loader />}><TodoJson /></Suspense></Protect>
       },
       {

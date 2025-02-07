@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import style from "./Home.module.css"
-import axios from "axios";
+import axios from "axios"
+import Button from "./Button"
 
 const Home = () => {
   const [data, setData] = useState(null)
@@ -15,7 +16,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="container-fluid" style={{ position: "relative", border: "1px solid" }}>
+    <div className="container-fluid" style={{ position: "relative" }}>
       {/* Background Image */}
       <img src="home.jpg" alt="background" style={{ height: "89.8vh", width: "100%", objectFit: "cover" }} />
 
@@ -30,6 +31,8 @@ const Home = () => {
           reprehenderit laudantium distinctio, illum est suscipit qui obcaecati placeat repudiandae esse eveniet
           molestias ullam.
         </p>
+        <Button/>
+
       </div>
     </div>
   );
