@@ -11,7 +11,7 @@ const TodoItem = ({ item, index }) => {
             .split(' ')
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
-    };
+    }
 
     // Checked line functionality
     const lineHandler = (val) => {
@@ -28,12 +28,6 @@ const TodoItem = ({ item, index }) => {
             {/* User Info */}
             <td>
                 <div className="d-flex align-items-center flex-column flex-md-row text-center text-md-start">
-                    <img
-                        src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-                        alt=""
-                        className="rounded-circle"
-                        style={{ width: '40px', height: '40px' }}
-                    />
                     <div className="ms-md-3">
                         <p className={`fw-bold mb-1 ${item.checked ? "text-decoration-line-through" : ""}`}>
                             {capitalizeEachWord(item.name)}

@@ -9,6 +9,8 @@ const Navbar = () => {
     const [color, setcolor] = useState(false) // dark and light mode
     const dropProject = ["Clock", "Color", "MixColor", "Image", "TextCounter"]
 
+    const NavList = ["Home", "Todo", "TodoFile", "Social"]
+
     let navigate = useNavigate()
     const login = JSON.parse(localStorage.getItem("login-user" || "{}"))
 
@@ -46,18 +48,13 @@ const Navbar = () => {
                         login?.flag && (
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="/">Home</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="todo">Todo</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="todojson">TodoJson</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : null} aria-current="page" to="social">Social</NavLink>
-                                    </li>
+                                    {
+                                        NavList.map((item, i) => (
+                                            <li key={i} className="nav-item">
+                                                <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : {}} aria-current="page" to={item==="Home"?"/": item.toLowerCase()}>{item}</NavLink>
+                                            </li>
+                                        ))
+                                    }
 
                                     <li className="nav-item dropdown">
                                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

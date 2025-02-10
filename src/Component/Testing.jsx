@@ -1,23 +1,23 @@
-import { useState } from "react";
-import axios from "axios";
-import { useEffect } from "react";
+import { useState } from "react"
+import axios from "axios"
+import { useEffect } from "react"
 
 const ImageUpload = () => {
     const [data, setData] = useState([])
 
     const [file, setFile] = useState(null)
-    const [preview, setPreview] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [preview, setPreview] = useState("")
+    const [loading, setLoading] = useState(false)
 
     // Convert image to Base64
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = (error) => reject(error);
-        });
-    };
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onload = () => resolve(reader.result)
+            reader.onerror = (error) => reject(error)
+        })
+    }
 
     const handleImageChange = async (e) => {
         const selectedFile = e.target.files[0]
@@ -28,7 +28,7 @@ const ImageUpload = () => {
 
         setFile(base64Image)
         setPreview(URL.createObjectURL(selectedFile))
-    };
+    }
 
     const uploadImage = async () => {
         if (!file) {
@@ -44,7 +44,7 @@ const ImageUpload = () => {
             name: "kell",
             age: 34,
             email: "kell@gmail.com",
-        };
+        }
 
 
 
@@ -52,15 +52,15 @@ const ImageUpload = () => {
         axios
             .post("http://localhost:3000/users", userData)
             .then((res) => {
-                console.log("Upload Success:", res.data);
-                alert("Image uploaded successfully!");
+                console.log("Upload Success:", res.data)
+                alert("Image uploaded successfully!")
             })
             .catch((err) => {
-                console.error("Upload Error:", err);
-                alert("Image upload failed!");
+                console.error("Upload Error:", err)
+                alert("Image upload failed!")
             })
-            .finally(() => setLoading(false));
-    };
+            .finally(() => setLoading(false))
+    }
 
     useEffect(() => {
         axios.get("http://localhost:3000/users")
@@ -123,7 +123,7 @@ const ImageUpload = () => {
 
         </>
 
-    );
-};
+    )
+}
 
-export default ImageUpload;
+export default ImageUpload

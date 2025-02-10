@@ -2,8 +2,8 @@ import { useState } from "react"  // File send to server
 import { MDBFile } from "mdb-react-ui-kit"
 import axios from "axios"
 import CheckBox from "./CheckBox"
-import Radio from "./Radio";
-import Select from "./Select";
+import Radio from "./Radio"
+import Select from "./Select"
 
 
 const Image = () => {
@@ -20,9 +20,9 @@ const Image = () => {
 
     // Handle file upload to server 
     const uploadHandler = async () => {
-        if (!file) return;
+        if (!file) return
 
-        setSts("upload"); // Set status to "uploading"
+        setSts("upload") // Set status to "uploading"
 
         const formData = new FormData()
         formData.append("file", file)
@@ -32,15 +32,15 @@ const Image = () => {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
-            });
+            })
 
             console.log("Upload Response:", response.data)
             setSts("success")
         } catch (error) {
-            console.error("Upload Error:", error);
-            setSts("error");
+            console.error("Upload Error:", error)
+            setSts("error")
         }
-    };
+    }
 
 
 
@@ -86,7 +86,7 @@ const Image = () => {
             <hr />
             <Select />
         </center>
-    );
-};
+    )
+}
 
-export default Image;
+export default Image
