@@ -6,6 +6,7 @@ import Testing from "./Component/Testing"
 
 const App = () => {
 
+ console.log(import.meta.env.VITE_NEWS_KEY)
 
   return (
     <>
