@@ -1,9 +1,9 @@
-import { MDBBtn, MDBCheckbox } from 'mdb-react-ui-kit';
-import { useContext } from 'react';
-import { TodoContext } from '../../store/Todo-Item';
+import { MDBBtn, MDBCheckbox } from 'mdb-react-ui-kit'
+import { useContext } from 'react'
+import { TodoContext } from '../../store/Todo-Item'
 
 const TodoItem = ({ item, index }) => {
-    const { todo, setTodo, deleteHandler, editHandler } = useContext(TodoContext);
+    const { lineHandler, deleteHandler, editHandler } = useContext(TodoContext)
 
     // Capitalize Each Word
     const capitalizeEachWord = (str) => {
@@ -13,14 +13,6 @@ const TodoItem = ({ item, index }) => {
             .join(' ');
     }
 
-    // Checked line functionality
-    const lineHandler = (val) => {
-        const updatedTodos = todo.map((todoItem) =>
-            todoItem.name === val ? { ...todoItem, checked: !todoItem.checked } : todoItem
-        );
-        setTodo(updatedTodos);
-    };
-
     return (
         <tr className="align-middle">
             <td className="text-center">{index + 1}</td>
@@ -28,6 +20,12 @@ const TodoItem = ({ item, index }) => {
             {/* User Info */}
             <td>
                 <div className="d-flex align-items-center flex-column flex-md-row text-center text-md-start">
+                    <img
+                        src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+                        alt=""
+                        className="rounded-circle"
+                        style={{ width: '40px', height: '40px' }}
+                    />
                     <div className="ms-md-3">
                         <p className={`fw-bold mb-1 ${item.checked ? "text-decoration-line-through" : ""}`}>
                             {capitalizeEachWord(item.name)}
@@ -67,4 +65,4 @@ const TodoItem = ({ item, index }) => {
     );
 };
 
-export default TodoItem;
+export default TodoItem

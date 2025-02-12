@@ -1,6 +1,11 @@
+import axios from "axios";
+import { TodoJsonContext } from "../../store/TodoJson-Item";
+import { useContext } from "react";
 
 
 const TodoCmpt = ({ item, index }) => {
+    const { deleteHanlder ,editHanlder} = useContext(TodoJsonContext)
+
 
     // Capitalize Each Word
     const capitalizeEachWord = (str) => {
@@ -38,10 +43,10 @@ const TodoCmpt = ({ item, index }) => {
                     <span className="badge badge-success rounded-pill d-inline">{new Date(item.date).toDateString()}</span>
                 </td>
                 <td>
-                    <button type="button" className="btn btn-danger btn-sm btn-rounded mx-1">
-                        Edit
+                    <button type="button" className="btn btn-danger btn-sm btn-rounded mx-1" onClick={() => deleteHanlder(item.id)}>
+                        Delete
                     </button>
-                    <button type="button" className="btn btn-primary btn-sm btn-rounded">
+                    <button type="button" className="btn btn-primary btn-sm btn-rounded" onClick={() => editHanlder(item.id)}>
                         Edit
                     </button>
                 </td>

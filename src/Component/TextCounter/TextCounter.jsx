@@ -1,93 +1,97 @@
-import { MDBTextArea, MDBBtn } from 'mdb-react-ui-kit';
-import { useState } from 'react';
+import { MDBTextArea, MDBBtn } from "mdb-react-ui-kit"
+import { useState } from "react"
 
 const TextCounter = () => {
-    const [text, setText] = useState("")
+  const [text, setText] = useState("")
 
-    // Uppercase Function
-    const upHanlder = () => {
-        setText(text.toUpperCase())
-        // showAlert("Converted to Uppercase!", "success")
-    }
-    // Lowercase Function
-    const lowerHanlder = () => {
-        setText(text.toLowerCase())
-        // showAlert("Converted to Lowercase!", "success")
-    }
+  // Uppercase Function
+  const upHandler = () => {
+    setText(text.toUpperCase())
+  }
 
-    // Clear Function
-    const clearHnadler = () => {
-        setText("")
-        // showAlert("Text is Cleared!", "success")
-    }
+  // Lowercase Function
+  const lowerHandler = () => {
+    setText(text.toLowerCase())
+  }
 
-    // Extra space removal Function
-    const extraSpaceHnadler = () => {
-        const newTex = text.split(/[ ]+/)
-        setText(newTex.join(" "))
-        // showAlert("Extra Space Removed!", "success")
-    }
+  // Clear Function
+  const clearHandler = () => {
+    setText("")
+  }
 
-    // Reversed text Function
-    const reverseHnadler = () => {
-        const val = text.split(" ").toReversed().join(" ")
-        setText(val)
-        // showAlert("Text has been reversed!", "success")
-    }
+  // Extra space removal Function
+  const extraSpaceHandler = () => {
+    setText(text.replace(/\s+/g, " ").trim())
+  }
 
-    // Copy Function
-    const copyHnadler = () => {
-        // const myText = document.getElementById("myBox")
-        // myText.select();   //this is not showing select
-        navigator.clipboard.writeText(text)
-        // showAlert("Copied to clipboared!", "success")
-    }
+  // Reversed text Function
+  const reverseHandler = () => {
+    setText(text.split(" ").reverse().join(" "))
+  }
 
-    //This is for display 0 word at initail state
-    const newText = text.split(/\s+/)    // Regular expression used here***********
-    const treuTextWord = newText.filter(e => e !== "").length
+  // Copy Function with Alert
+  const copyHandler = () => {
+    navigator.clipboard.writeText(text)
+    alert("Text copied to clipboard!")
+  }
 
-     //This is for display 0 Time at initial state
-     const valTime = (0.008 * treuTextWord).toFixed(2)
-    return (
-        <div className="container my-4">
-            <div className="col-md-8 mx-auto">
-                <h2 className='mb-4'>Enter the text to analyze</h2>
-                <MDBTextArea className={`mb-4`} label="Enter Text" id="myBox" rows={6} value={text} onChange={(e) => setText(e.target.value)} />
-            </div>
+  // Word & Character Count
+  const wordsArray = text.trim().split(/\s+/).filter((word) => word !== "")
+  const wordCount = wordsArray.length
+  const charCount = text.length
 
-            {/* Button */}
-            <div className='col-md-8 mx-auto' style={{ display: "flex", gap: "5px" }}>
-                <MDBBtn disabled={!text} rounded color='primary' size='sm' onClick={upHanlder}>
-                    UpperCase
-                </MDBBtn>
-                <MDBBtn disabled={!text} rounded color='primary' size='sm' onClick={lowerHanlder} >
-                    LowerCase
-                </MDBBtn>
-                <MDBBtn disabled={!text} rounded color='primary' size='sm' onClick={copyHnadler}>
-                    Copy
-                </MDBBtn>
-                <MDBBtn disabled={!text} rounded color='primary' size='sm' onClick={clearHnadler}>
-                    Clear
-                </MDBBtn>
-                <MDBBtn disabled={!text} rounded color='primary' size='sm' onClick={extraSpaceHnadler}>
-                    Space Remove
-                </MDBBtn>
-                <MDBBtn disabled={!text} rounded color='primary' size='sm' onClick={reverseHnadler}>
-                    Reversed
-                </MDBBtn>
-            </div>
+  // Estimated Read Time (assuming 200 words per min)
+  const readTime = (wordCount / 125).toFixed(2)
 
-            {/* Summary of text */}
-            <div className="container col-md-8 mx-auto mt-4">
-                <h3>Your text summary</h3>
-                <p><strong>{treuTextWord}</strong>  Words and <strong>{text.length}</strong>  Characters</p>
-                <p><strong>{valTime ? valTime : null}</strong> minutes read</p>
-                <p>{!text ? "Enter something to preview here" : text}</p>
-            </div>
-        </div>
-    )
+  return (
+    <div className="container my-4">
+      <div className="col-md-8 mx-auto">
+        <h2 className="mb-4">Enter the text to analyze</h2>
+        <MDBTextArea
+          className="mb-4"
+          label="Enter Text"
+          id="myBox"
+          rows={6}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+      </div>
+
+      {/* Buttons */}
+      <div className="col-md-8 mx-auto" style={{ display: "flex", gap: "5px", flexWrap: "wrap" }}>
+        <MDBBtn disabled={!text} rounded color="primary" size="sm" onClick={upHandler}>
+          UpperCase
+        </MDBBtn>
+        <MDBBtn disabled={!text} rounded color="primary" size="sm" onClick={lowerHandler}>
+          LowerCase
+        </MDBBtn>
+        <MDBBtn disabled={!text} rounded color="primary" size="sm" onClick={copyHandler}>
+          Copy
+        </MDBBtn>
+        <MDBBtn disabled={!text} rounded color="primary" size="sm" onClick={clearHandler}>
+          Clear
+        </MDBBtn>
+        <MDBBtn disabled={!text} rounded color="primary" size="sm" onClick={extraSpaceHandler}>
+          Space Remove
+        </MDBBtn>
+        <MDBBtn disabled={!text} rounded color="primary" size="sm" onClick={reverseHandler}>
+          Reverse
+        </MDBBtn>
+      </div>
+
+      {/* Text Summary */}
+      <div className="container col-md-8 mx-auto mt-4">
+        <h3>Your text summary</h3>
+        <p>
+          <strong>{wordCount}</strong> words and <strong>{charCount}</strong> characters
+        </p>
+        <p>
+          <strong>{wordCount > 0 ? readTime : "0.00"}</strong> minutes read
+        </p>
+        <p>{text || "Enter something to preview here"}</p>
+      </div>
+    </div>
+  )
 }
 
 export default TextCounter
-

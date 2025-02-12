@@ -1,11 +1,19 @@
 import { MDBInput, MDBBtn, MDBFile } from "mdb-react-ui-kit"
-import { useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import axios from "axios"
-import { useEffect } from "react"
+import { TodoJsonContext } from "../../store/TodoJson-Item"
 
 const Add = () => {
     const [data, setData] = useState({ name: "", age: "", email: "", date: "", file: null })
     const [preview, setPreview] = useState(null)
+    const { todo, flag, setFlag, fetchData, id } = useContext(TodoJsonContext) // fetch data from context api
+
+    // Reset form
+    const resetForm = () => {
+        setData({ name: "", age: "", email: "", date: "", file: null })
+        setPreview(null)
+    }
+
 
     // Convert image to Base64
     const convertToBase64 = (file) => {
@@ -17,6 +25,19 @@ const Add = () => {
         })
     }
 
+
+    // Convert Base64 to Blob URL for preview
+    const base64ToBlobUrl = (base64) => {
+        if (!base64) return null
+        const byteCharacters = atob(base64.split(',')[1])
+        const byteArrays = []
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteArrays.push(byteCharacters.charCodeAt(i))
+        }
+        const byteArray = new Uint8Array(byteArrays);
+        const blob = new Blob([byteArray], { type: "image/png" }); // Adjust type accordingly
+        return URL.createObjectURL(blob)
+    }
 
     // Handle text input changes
     const changeHandler = (e) => {
@@ -38,16 +59,15 @@ const Add = () => {
     }
 
     // Submit handler with POST request
-
     const submitHandler = async (e) => {
         e.preventDefault()
-
         try {
             const response = await axios.post("http://localhost:3000/users", data, {
                 headers: { "Content-Type": "application/json" }
             })
 
             console.log("Success:", response.data)
+            fetchData()
             alert("Form submitted successfully!")
 
             // Reset form
@@ -59,7 +79,43 @@ const Add = () => {
         }
     }
 
+    //PUT request
+    const updateHandler = (e) => {
+        e.preventDefault()
 
+        axios.put(`http://localhost:3000/users/${id}`, data,)
+            .then(() => {
+                fetchData()
+                setFlag(false)
+                setData({ name: "", age: "", email: "", date: "", file: null })
+                setPreview(null)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+
+
+    }
+
+    // Load data for editing
+    useEffect(() => {
+        if (id !== null) {
+            const existingData = todo.find((e) => e.id === id)
+            if (existingData) {
+                setData({
+                    name: existingData.name,
+                    age: existingData.age,
+                    email: existingData.email,
+                    date: existingData.date,
+                    file: existingData.file, // Keep Base64
+                });
+                setPreview(base64ToBlobUrl(existingData.file)); // Convert Base64 to preview
+            }
+        } else {
+            resetForm()
+        }
+    }, [id, todo])
 
 
     return (
@@ -76,7 +132,10 @@ const Add = () => {
                                 <MDBInput className="mb-3" name="date" type="date" label="Date" value={data.date} onChange={changeHandler} required />
 
                                 <MDBFile className="mb-3" name="file" onChange={fileChangeHandler} required />
-                                <MDBBtn type="submit" size="sm">Submit</MDBBtn>
+                                {
+                                    !flag ? <MDBBtn color="primary" size="sm">Submit</MDBBtn> : <MDBBtn color="success" size="sm" onClick={updateHandler}>Update</MDBBtn>
+                                }
+
                             </form>
                         </div>
 
