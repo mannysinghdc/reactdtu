@@ -1,9 +1,6 @@
 import { useState } from "react"  // File send to server 
 import { MDBFile } from "mdb-react-ui-kit"
 import axios from "axios"
-import CheckBox from "./CheckBox"
-import Radio from "./Radio"
-import Select from "./Select"
 
 
 const Image = () => {
@@ -79,12 +76,6 @@ const Image = () => {
             {sts === "error" && <p className="text-danger">❌ Upload failed. Please try again!</p>}
 
 
-            <hr />
-            <CheckBox />
-            <hr />
-            <Radio />
-            <hr />
-            <Select />
         </center>
     )
 }

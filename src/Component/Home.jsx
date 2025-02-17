@@ -25,12 +25,12 @@ const Home = () => {
       <div className={style.over_lay}>
         <h1>About Our Website!</h1>
         {/* Github image */}
-        {data && <img src={data} alt="image" style={{ borderRadius: "50%", width: "250px" }} />}
+          {data && <img src={data} alt="image" style={{ borderRadius: "50%", width: "250px" }} />} 
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum commodi repellat autem magni possimus
           reprehenderit laudantium distinctio, illum est suscipit qui obcaecati placeat repudiandae esse eveniet
           molestias ullam.
-        </p>
+        </p> 
         <Button/>
 
       </div>

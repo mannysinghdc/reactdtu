@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { MdNightlight, MdOutlineLightMode } from "react-icons/md"
 import { useEffect, useState } from "react"
 import { MDBBtn } from 'mdb-react-ui-kit';
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import Clock from "./Todo/Clock";
 
 const Navbar = () => {
@@ -12,6 +12,7 @@ const Navbar = () => {
     const NavList = ["Home", "Todo", "TodoFile", "Social"]
 
     let navigate = useNavigate()
+    const { pathname } = useLocation()
     const login = JSON.parse(localStorage.getItem("login-user" || "{}"))
 
     //Capital first letter function
@@ -51,11 +52,15 @@ const Navbar = () => {
                                     {
                                         NavList.map((item, i) => (
                                             <li key={i} className="nav-item">
-                                                <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : {}} aria-current="page" to={item==="Home"?"/": item.toLowerCase()}>{item}</NavLink>
+                                                {
+                                                    pathname === "/" ? <Link className="nav-link" ria-current="page" to={item === "Home" ? "/" : item.toLowerCase()} >{item}</Link> :
+
+                                                        <NavLink className="nav-link" style={({ isActive }) => isActive ? { color: "red" } : {}} aria-current="page" to={item === "Home" ? "/" : item.toLowerCase()}>{item}</NavLink>
+                                                }
                                             </li>
                                         ))
                                     }
-
+                                    {/* Dropdown */}
                                     <li className="nav-item dropdown">
                                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Project
@@ -66,8 +71,6 @@ const Navbar = () => {
                                                     <li key={item}><Link className="dropdown-item" to={item.toLocaleLowerCase()}>{item}</Link></li>
                                                 ))
                                             }
-                                            {/* <li><Link className="dropdown-item" to="clock">Clock</Link></li>
-                                            <li><Link className="dropdown-item" to="image">Image</Link></li> */}
                                         </ul>
                                     </li>
 
