@@ -1,28 +1,29 @@
-import { StrictMode, Suspense, lazy } from 'react';
-import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import './index.css';
+import { StrictMode, Suspense, lazy } from 'react'
+import { createRoot } from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+import "@fortawesome/fontawesome-free/css/all.min.css"
+import './index.css'
 
-import App from './App.jsx';
-import SocialContextProvider from './store/Social-Item.jsx';
-import Loader from './Component/Loader.jsx/Loader.jsx';
+import App from './App.jsx'
+import SocialContextProvider from './store/Social-Item.jsx'
+import Loader from './Component/Loader.jsx/Loader.jsx'
+import Todo2 from './Component/NewTodo/Todo2.jsx'
 
 // Lazy-loaded components
-const Home = lazy(() => import('./Component/Home.jsx'));
-const Todo = lazy(() => import('./Component/Todo/Todo.jsx'));
+const Home = lazy(() => import('./Component/Home.jsx'))
+const Todo = lazy(() => import('./Component/Todo/Todo.jsx'))
 const TodoJson = lazy(() => import('./Component/JSON/TodoFile.jsx'))
-const Social = lazy(() => import('./Component/Social/Social.jsx'));
-const Color = lazy(() => import('./Component/Color/Color.jsx'));
-const Rgb = lazy(() => import('./Component/Color/Rgb.jsx'));
-const PostList = lazy(() => import('./Component/Social/PostList.jsx'));
-const Image = lazy(() => import('./Component/Image.jsx'));
-const Watch = lazy(() => import('./Component/Watch/Watch.jsx'));
-const SignUp = lazy(() => import('./Component/Login/SignUp.jsx'));
-const Login = lazy(() => import('./Component/Login/Login.jsx'));
-const NotPage = lazy(() => import('./Component/404.jsx'));
-const Protect = lazy(() => import('./Component/Login/Protect.jsx'));
+const Social = lazy(() => import('./Component/Social/Social.jsx'))
+const Color = lazy(() => import('./Component/Color/Color.jsx'))
+const Rgb = lazy(() => import('./Component/Color/Rgb.jsx'))
+const PostList = lazy(() => import('./Component/Social/PostList.jsx'))
+const Image = lazy(() => import('./Component/Image.jsx'))
+const Watch = lazy(() => import('./Component/Watch/Watch.jsx'))
+const SignUp = lazy(() => import('./Component/Login/SignUp.jsx'))
+const Login = lazy(() => import('./Component/Login/Login.jsx'))
+const NotPage = lazy(() => import('./Component/404.jsx'))
+const Protect = lazy(() => import('./Component/Login/Protect.jsx'))
 const TextCounter = lazy(() => import('./Component/TextCounter/TextCounter.jsx')) 
 
 const router = createBrowserRouter([
@@ -75,6 +76,11 @@ const router = createBrowserRouter([
         element: <Protect> <Suspense fallback={<Loader />}><Todo /></Suspense></Protect>             
       },
       {
+        path: "todo2",
+        element: <Protect> <Suspense fallback={<Loader />}><Todo2/></Suspense></Protect>             
+      },
+      
+      {
         path: "todofile",                                                                            
         element: <Protect> <Suspense fallback={<Loader />}><TodoJson /></Suspense></Protect>
       },
@@ -84,7 +90,7 @@ const router = createBrowserRouter([
       },
     ]
   }
-]);
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -95,4 +101,4 @@ createRoot(document.getElementById('root')).render(
       </Suspense>
     </SocialContextProvider>
   </StrictMode>
-);
+)

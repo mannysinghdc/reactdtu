@@ -9,7 +9,7 @@ const Navbar = () => {
     const [color, setcolor] = useState(false) // dark and light mode
     const dropProject = ["Clock", "Color", "MixColor", "Image", "TextCounter"]
 
-    const NavList = ["Home", "Todo", "TodoFile", "Social"]
+    const NavList = ["Home", "Todo", "Todo2", "TodoFile", "Social"]
 
     let navigate = useNavigate()
     const { pathname } = useLocation()
