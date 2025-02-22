@@ -32,7 +32,7 @@ const FormN = () => {
             {/* Todo Form */}
             <form onSubmit={submitHandler}>
                 <div className="mb-3 w-50 mx-auto d-flex shadow rounded bg-light">
-                    <input type="text" className="form-control" value={text} onChange={(e) => setText(e.target.value)} />
+                    <input type="text" className="form-control" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter your todos here.." />
                     <button type="submit" className="btn btn-primary">Add</button>
                 </div>
 

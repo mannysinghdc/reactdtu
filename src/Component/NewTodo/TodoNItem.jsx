@@ -40,7 +40,7 @@ const TodoNItem = ({ todo }) => {
                 {isTodoEditable ? (
                     <button className="btn btn-success btn-sm mx-1 mb-1 mb-md-0" onClick={updateEdit}>Update</button>
                 ) : (
-                    <button className="btn btn-primary btn-sm mx-1 mb-1 mb-md-0" onClick={() => setIsTodoEditable(true)}>Edit</button>
+                    <button className="btn btn-primary btn-sm mx-1 mb-1 mb-md-0" disabled={todo.checked} onClick={() => setIsTodoEditable(true)}>Edit</button>
                 )}
 
                 <button className="btn btn-danger btn-sm" onClick={() => deleteTodo(todo.id)}>Delete</button>
