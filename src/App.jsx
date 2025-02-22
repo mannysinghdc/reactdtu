@@ -3,6 +3,7 @@ import Navbar from "./Component/Navbar"
 import { useEffect, useState } from "react"
 import Testing from "./Component/Testing"
 import Today from "./Component/Today"
+import Footer from "./Component/Footer"
 
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
       {/* <Today /> */}
       {/* <Testing/> */}
       <Outlet />
+      <Footer/>
 
     </>
   )
