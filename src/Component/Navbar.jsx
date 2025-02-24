@@ -7,7 +7,7 @@ import Clock from "./Todo/Clock";
 
 const Navbar = () => {
     const [color, setcolor] = useState(false) // dark and light mode
-    const dropProject = ["Clock", "Color", "MixColor", "Image", "TextCounter"]
+    const dropProjectList = ["Clock", "Color", "MixColor", "Image", "TextCounter","Weather"]
 
     const NavList = ["Home", "Todo", "Todo2", "TodoFile", "Social"]
 
@@ -67,7 +67,7 @@ const Navbar = () => {
                                         </a>
                                         <ul className="dropdown-menu">
                                             {
-                                                dropProject.map((item) => (
+                                                dropProjectList.map((item) => (
                                                     <li key={item}><Link className="dropdown-item" to={item.toLocaleLowerCase()}>{item}</Link></li>
                                                 ))
                                             }

@@ -9,6 +9,7 @@ import App from './App.jsx'
 import SocialContextProvider from './store/Social-Item.jsx'
 import Loader from './Component/Loader.jsx/Loader.jsx'
 import Todo2 from './Component/NewTodo/Todo2.jsx'
+import Weather from './Component/Weather/Weather.jsx'
 
 // Lazy-loaded components
 const Home = lazy(() => import('./Component/Home.jsx'))
@@ -24,7 +25,7 @@ const SignUp = lazy(() => import('./Component/Login/SignUp.jsx'))
 const Login = lazy(() => import('./Component/Login/Login.jsx'))
 const NotPage = lazy(() => import('./Component/404.jsx'))
 const Protect = lazy(() => import('./Component/Login/Protect.jsx'))
-const TextCounter = lazy(() => import('./Component/TextCounter/TextCounter.jsx')) 
+const TextCounter = lazy(() => import('./Component/TextCounter/TextCounter.jsx'))
 
 const router = createBrowserRouter([
   {
@@ -73,20 +74,24 @@ const router = createBrowserRouter([
       },
       {
         path: "todo",
-        element: <Protect> <Suspense fallback={<Loader />}><Todo /></Suspense></Protect>             
+        element: <Protect> <Suspense fallback={<Loader />}><Todo /></Suspense></Protect>
       },
       {
         path: "todo2",
-        element: <Protect> <Suspense fallback={<Loader />}><Todo2/></Suspense></Protect>             
+        element: <Protect> <Suspense fallback={<Loader />}><Todo2 /></Suspense></Protect>
       },
-      
+
       {
-        path: "todofile",                                                                            
+        path: "todofile",
         element: <Protect> <Suspense fallback={<Loader />}><TodoJson /></Suspense></Protect>
       },
       {
         path: "textcounter",
         element: <Protect> <Suspense fallback={<Loader />}><TextCounter /></Suspense></Protect>
+      },
+      {
+        path: "weather",
+        element: <Protect> <Suspense fallback={<Loader />}><Weather /></Suspense></Protect>
       },
     ]
   }
