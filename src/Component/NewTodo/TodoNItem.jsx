@@ -18,9 +18,10 @@ const TodoNItem = ({ todo }) => {
     }
 
     return (
-        <div className={`alert alert-${todo.checked ? "success" : "primary"} mx-auto d-flex flex-column flex-md-row justify-content-between align-items-center w-50 p-3 shadow rounded`} role="alert">
+        <div className={`alert alert-${todo.checked ? "success" : "primary"} mx-auto d-flex flex-column flex-md-row justify-content-between align-items-center w-50 p-3 shadow rounded`} role="alert" style={{}}>
             <div className="d-flex align-items-center w-100">
                 <input className="form-check-input me-2" type="checkbox" checked={todo.checked} onChange={() => toggleComplete(todo.id)} />
+                
 
                 {isTodoEditable ? (
                     <input

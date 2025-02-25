@@ -10,6 +10,8 @@ import SocialContextProvider from './store/Social-Item.jsx'
 import Loader from './Component/Loader.jsx/Loader.jsx'
 import Todo2 from './Component/NewTodo/Todo2.jsx'
 import Weather from './Component/Weather/Weather.jsx'
+import RecipeItem from './Component/Recipe/RecipeItem.jsx'
+import Recipe from './Component/Recipe/Recipe.jsx'
 
 // Lazy-loaded components
 const Home = lazy(() => import('./Component/Home.jsx'))
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
       {
         path: "clock",
         element: <Protect> <Suspense fallback={<Loader />}><Watch /></Suspense></Protect>
+      },
+      {
+        path: "recipe",
+        element: <Protect> <Suspense fallback={<Loader />}><Recipe /></Suspense></Protect>
+      },
+      {
+        path: "recipe/:id",
+        element: <Protect> <Suspense fallback={<Loader />}><RecipeItem/></Suspense></Protect>
       },
       {
         path: "todo",

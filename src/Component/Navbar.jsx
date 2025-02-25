@@ -7,9 +7,9 @@ import Clock from "./Todo/Clock";
 
 const Navbar = () => {
     const [color, setcolor] = useState(false) // dark and light mode
-    const dropProjectList = ["Clock", "Color", "MixColor", "Image", "TextCounter","Weather"]
+    const dropProjectList = ["Clock", "Color", "MixColor", "Image", "TextCounter", "Social", "Weather"]
 
-    const NavList = ["Home", "Todo", "Todo2", "TodoFile", "Social"]
+    const NavList = ["Home", "Todo", "Todo2", "TodoFile", "Recipe"]
 
     let navigate = useNavigate()
     const { pathname } = useLocation()
