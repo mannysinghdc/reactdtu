@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"    // Api integration
 import { MDBInput } from "mdb-react-ui-kit"
 import { Link } from "react-router-dom"
+import Loader from "../Loader.jsx/Loader"
 
 const Recipe = () => {
     const [data, setData] = useState([])
@@ -27,24 +28,28 @@ const Recipe = () => {
 
     //Filter daat
     const filterData = data.filter((item) =>
-        item.name.toLowerCase().includes(text.toLowerCase()) 
+        item.name.toLowerCase().includes(text.toLowerCase())
     )
 
     return (
         <>
-            <h1 className="text-center my-4">Food Gallery</h1>
+            {
+                !loading && <>
+                    <h1 className="text-center my-4">Food Gallery</h1>
+                    <div className="m-auto w-50 mb-4">
+                        <MDBInput
+                            className="mb-4"
+                            type="text"
+                            label="Search Food"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                        />
+                    </div>
+                </>
+            }
 
-            <div className="m-auto w-50 mb-4">
-                <MDBInput
-                    className="mb-4"
-                    type="text"
-                    label="Search Food"
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                />
-            </div>
 
-            {loading && <h1 className="text-center">Loading...</h1>}
+            {loading && <Loader />}
 
             <div className="container">
                 <div className="row">

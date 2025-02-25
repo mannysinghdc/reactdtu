@@ -8,10 +8,9 @@ import './index.css'
 import App from './App.jsx'
 import SocialContextProvider from './store/Social-Item.jsx'
 import Loader from './Component/Loader.jsx/Loader.jsx'
-import Todo2 from './Component/NewTodo/Todo2.jsx'
 import Weather from './Component/Weather/Weather.jsx'
-import RecipeItem from './Component/Recipe/RecipeItem.jsx'
-import Recipe from './Component/Recipe/Recipe.jsx'
+
+
 
 // Lazy-loaded components
 const Home = lazy(() => import('./Component/Home.jsx'))
@@ -28,6 +27,9 @@ const Login = lazy(() => import('./Component/Login/Login.jsx'))
 const NotPage = lazy(() => import('./Component/404.jsx'))
 const Protect = lazy(() => import('./Component/Login/Protect.jsx'))
 const TextCounter = lazy(() => import('./Component/TextCounter/TextCounter.jsx'))
+const Recipe = lazy(() => import('./Component/Recipe/Recipe.jsx'))
+const RecipeItem= lazy(()=>import('./Component/Recipe/RecipeItem.jsx')) 
+const Todo2= lazy(()=>import('./Component/NewTodo/Todo2.jsx')) 
 
 const router = createBrowserRouter([
   {
