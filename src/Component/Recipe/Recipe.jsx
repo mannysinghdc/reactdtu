@@ -68,6 +68,8 @@ const Recipe = () => {
 
 export default Recipe
 
+//Card cmpt
+
 const Card = ({ item }) => {
     return (
         <div className="card shadow-lg rounded h-100">
