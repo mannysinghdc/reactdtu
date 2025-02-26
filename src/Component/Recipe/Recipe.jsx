@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react"    // Api integration
+import { useEffect, useState } from "react"    // Api integration with error boundary and Shimmer Effect
 import { MDBInput } from "mdb-react-ui-kit"
 import { Link } from "react-router-dom"
 import Loader from "../Loader.jsx/Loader"
+import Card from "./Card"
+
 
 const Recipe = () => {
     const [data, setData] = useState([])
@@ -33,6 +35,8 @@ const Recipe = () => {
 
     return (
         <>
+            {/* Header and Search Box */}
+
             {
                 !loading && <>
                     <h1 className="text-center my-4">Food Gallery</h1>
@@ -48,41 +52,53 @@ const Recipe = () => {
                 </>
             }
 
-
-            {loading && <Loader />}
-
-            <div className="container">
-                <div className="row">
-                    {filterData.map((item) => (
-                        <div className="col-md-3 mb-4" key={item.id}>
-                            <Link to={`/recipe/${item.id}`} style={{ textDecoration: "none" }}>
-                                <Card item={item} />
-                            </Link>
+            {/* Loader + Shimmer Effect */}
+            {
+                loading ? (
+                    <div className="container position-relative"> {/* Wrapper for Loader & Shimmer Cards */}
+                        {/* Centered Loader */}
+                        <div style={{ position: "absolute", top: "20%", left: "50%", zIndex: 10 }}>
+                            <Loader />
                         </div>
-                    ))}
-                </div>
-            </div>
+
+                        <div className="row mt-4">
+                            {Array(8).fill().map((_, index) => (
+                                <div className="col-md-3 mb-4" key={index}>
+                                    <ShimmerCard />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+                    : (
+                        <div className="container">
+                            <div className="row">
+                                {filterData.map((item) => (
+                                    <div className="col-md-3 mb-4" key={item.id}>
+                                        <Link to={`/recipe/${item.id}`} style={{ textDecoration: "none" }} state={item}>
+                                            <Card item={item} />
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )
+            }
+
         </>
     )
 }
 
 export default Recipe
 
-//Card cmpt
-
-const Card = ({ item }) => {
+//Shimmer cmpt
+const ShimmerCard = () => {
     return (
-        <div className="card shadow-lg rounded h-100">
-            <img className="card-img-top" src={item.image} alt={item.name} />
-            <div className="card-body">
-                <h5 className="card-title">{item.name}</h5>
-                <p className="card-text">
-                    Rating:{" "}
-                    <span className={item.rating > 4.6 ? "text-primary" : "text-danger"}>
-                        {item.rating}
-                    </span>
-                </p>
-            </div>
+        <div className="card shadow-lg rounded" style={{ height: "380px", width: "270px", backgroundColor: "#ded4d4" }}>
+
         </div>
     )
 }
+
+
+

@@ -35,9 +35,11 @@ const Navbar = () => {
 
             <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#cbf8f8" }}>
                 <div className="container-fluid">
+                    {/* Logo Image */}
                     <Link className="navbar-brand" to="/">
-                        <img src="vite.svg" alt="image" />
+                        <img src="vite.svg" loading="lazy" alt="image" />
                     </Link>
+                    {/* Button display on mobile view */}
                     {
                         login?.flag && <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
