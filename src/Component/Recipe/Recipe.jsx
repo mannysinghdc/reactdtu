@@ -3,6 +3,7 @@ import { MDBInput } from "mdb-react-ui-kit"
 import { Link } from "react-router-dom"
 import Loader from "../Loader.jsx/Loader"
 import Card from "./Card"
+import ShimmerCard from "./ShimmerCard"
 
 
 const Recipe = () => {
@@ -64,7 +65,7 @@ const Recipe = () => {
                         <div className="row mt-4">
                             {Array(8).fill().map((_, index) => (
                                 <div className="col-md-3 mb-4" key={index}>
-                                    <ShimmerCard />
+                                    <ShimmerCard/>
                                 </div>
                             ))}
                         </div>
@@ -91,14 +92,7 @@ const Recipe = () => {
 
 export default Recipe
 
-//Shimmer cmpt
-const ShimmerCard = () => {
-    return (
-        <div className="card shadow-lg rounded" style={{ height: "380px", width: "270px", backgroundColor: "#ded4d4" }}>
 
-        </div>
-    )
-}
 
 
 

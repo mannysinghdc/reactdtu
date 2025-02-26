@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"  // conatain clock and light dark mode cmpt
+import { Link } from "react-router-dom"  // this Navbar is sticky clock and light dark mode cmpt
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { NavLink, useLocation, useNavigate } from "react-router";
 import Clock from "./Todo/Clock";
@@ -20,8 +20,7 @@ const Navbar = () => {
 
     return (
         <>
-
-            <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#cbf8f8" }}>
+            <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#cbf8f8", position: "sticky", top: 0 ,zIndex:1}}>
                 <div className="container-fluid">
                     {/* Logo Image */}
                     <Link className="navbar-brand" to="/">
