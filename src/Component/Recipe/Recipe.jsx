@@ -41,7 +41,7 @@ const Recipe = () => {
             {
                 !loading && <>
                     <h1 className="text-center my-4">Food Gallery</h1>
-                    <div className="m-auto w-50 mb-4">
+                    <div className="m-auto w-50 mb-4" style={{ minHeight: filterData.length === 0 && "40vh" }}>
                         <MDBInput
                             className="mb-4"
                             type="text"
@@ -65,7 +65,7 @@ const Recipe = () => {
                         <div className="row mt-4">
                             {Array(8).fill().map((_, index) => (
                                 <div className="col-md-3 mb-4" key={index}>
-                                    <ShimmerCard/>
+                                    <ShimmerCard />
                                 </div>
                             ))}
                         </div>

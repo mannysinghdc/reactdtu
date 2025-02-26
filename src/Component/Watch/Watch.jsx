@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"  // Digital Clock and select option for bg  
 
 
 const Watch = () => {
