@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom"
-import { MdNightlight, MdOutlineLightMode } from "react-icons/md"
-import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"  // conatain clock and light dark mode cmpt
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { NavLink, useLocation, useNavigate } from "react-router";
 import Clock from "./Todo/Clock";
+import DarkLight from "./DarkLight/DarkLight";
 
 const Navbar = () => {
-    const [color, setcolor] = useState(false) // dark and light mode
     const dropProjectList = ["Clock", "Color", "MixColor", "Image", "TextCounter", "Social", "Weather"]
 
     const NavList = ["Home", "Todo", "Todo2", "TodoFile", "Recipe"]
@@ -20,16 +18,6 @@ const Navbar = () => {
         return String(word).charAt(0).toUpperCase() + String(word).slice(1);
     }
 
-    useEffect(() => {
-        if (color) {
-            document.querySelector("body").style.backgroundColor = "gray"
-            document.querySelector("body").style.color = "white"
-        } else {
-            document.querySelector("body").style.backgroundColor = ""
-            document.querySelector("body").style.color = "gray"
-        }
-
-    }, [color])
     return (
         <>
 
@@ -79,12 +67,11 @@ const Navbar = () => {
 
                                 </ul>
                                 {/* Date & Time */}
-                                <div style={{ position: "relative", top: "8px", marginRight: "5px", color: color ? "gray" : "gray" }}>
+                                <div style={{ position: "relative", top: "8px", marginRight: "5px", color: "gray" }}>
                                     <Clock />
                                 </div>
-                                {
-                                    color ? <MdOutlineLightMode title="Light mode" onClick={() => setcolor(!color)} style={{ cursor: "pointer", color: color ? "gray" : "gray" }} /> : <MdNightlight title="Dark mode" onClick={() => setcolor(!color)} style={{ cursor: "pointer" }} />
-                                }
+                                {/* Dark & Night mode */}
+                                <DarkLight />
                                 <ul className="navbar-nav">
                                     <li className="nav-item dropdown">
                                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -101,11 +88,11 @@ const Navbar = () => {
                             </div>
                         )
                     }
+
+                    {/* This cmpt exicute after logout*/}
                     {
                         !login?.flag && <div>
-                            {
-                                color ? <MdOutlineLightMode title="Light mode" onClick={() => setcolor(!color)} style={{ cursor: "pointer", marginBottom: "5px", color: color ? "gray" : "gray" }} /> : <MdNightlight title="Dark mode" onClick={() => setcolor(!color)} style={{ cursor: "pointer", marginBottom: "5px" }} />
-                            }
+                            <DarkLight />
                             <MDBBtn rounded size='sm' className="mx-1" onClick={() => navigate("login")}>Login</MDBBtn>
                             <MDBBtn rounded size='sm' onClick={() => navigate("signUp")}>SIGNUP</MDBBtn>
                         </div>
