@@ -20,7 +20,7 @@ const DarkLight = () => {
 
     return (
         <>
-            {!mode ? <MdNightlight onClick={toggleMode} style={{ cursor: "pointer" }} title="Light Mode" /> : <MdOutlineLightMode onClick={toggleMode} />}
+            {!mode ? <MdNightlight onClick={toggleMode} style={{ cursor: "pointer" }} title="Light Mode" /> : <MdOutlineLightMode onClick={toggleMode} style={{ cursor: "pointer" ,color:"black"}}/>}
 
         </>
     )
