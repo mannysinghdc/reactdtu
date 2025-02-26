@@ -8,7 +8,7 @@ const DarkLight = () => {
     })
 
     useEffect(() => {
-        document.body.style.backgroundColor = mode ? "black" : "#f5f5f5"
+        document.body.style.backgroundColor = mode ? "#13303f" : "white"
         document.body.style.color = mode ? "white" : "black"
         document.body.style.transition = "background-color 0.3s ease"
 

@@ -6,6 +6,9 @@ const Create = () => {
     const [data, setData] = useState({ name: "", age: "", email: "", date: "" })
     const { todo, setTodo, flag, setFlag, clearHanlder, id } = useContext(TodoContext)
 
+    const lightDarkVal = JSON.parse(localStorage.getItem("isMode"))  // Retrieve its value for change color of text on light dark mode
+
+
     // Reset form
     const resetForm = () => {
         setData({ name: "", age: "", email: "", date: "" })
@@ -77,7 +80,7 @@ const Create = () => {
                 <div className="row justify-content-center">
                     <div className="col-12 col-md-6 p-4 shadow rounded bg-light">
                         <form onSubmit={(e) => submitHandler(e, flag ? "update" : "add")}>
-                            <h2 className="text-center">{flag ? "Update Form" : "Create Todo"}</h2>
+                            <h2 style={{ color: lightDarkVal && "black" }} className="text-center">{flag ? "Update Form" : "Create Todo"}</h2>
 
                             <div className="gap-2 d-flex flex-column">
                                 <MDBInput name="name" type="text" label="Name" value={data.name} onChange={changeHandler} />

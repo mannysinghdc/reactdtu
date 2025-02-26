@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import style from "./Watch.module.css"
 
 
 const Watch = () => {
@@ -30,13 +29,12 @@ const Watch = () => {
             setTime(new Date())
         }, 1000)
 
-        return () => clearInterval(intervalId);
-
+        return () => clearInterval(intervalId)
 
     }, [])
 
     return (
-        <center className="mt-3">
+        <center className="mt-3" style={{ minHeight: "280px" }}>
             <h2 style={{ fontStyle: "oblique" }}>Digital Clock</h2>
             <select value={color} onChange={handleChange}>
                 <option value="">--Select--</option>
@@ -46,8 +44,6 @@ const Watch = () => {
             <div style={styleCss}>
                 <p>{time.toLocaleTimeString()}</p>
             </div>
-
-
             <h3 className="mt-3">Date:{time.toLocaleDateString()}</h3>
         </center>
     )
