@@ -9,7 +9,7 @@ const DarkLight = () => {
 
     useEffect(() => {
         document.body.style.backgroundColor = mode ? "#13303f" : "white"
-        document.body.style.color = mode ? "white" : "black"
+        document.body.style.color = mode ? "white" : "gray"
         document.body.style.transition = "background-color 0.3s ease"
 
         localStorage.setItem("isMode", JSON.stringify(mode)) // Store the correct value
@@ -20,7 +20,7 @@ const DarkLight = () => {
 
     return (
         <>
-            {!mode ? <MdNightlight onClick={toggleMode} style={{ cursor: "pointer" }} title="Light Mode" /> : <MdOutlineLightMode onClick={toggleMode} style={{ cursor: "pointer" ,color:"black"}}/>}
+            {!mode ? <MdNightlight onClick={toggleMode} style={{ cursor: "pointer" }} title="Light Mode" /> : <MdOutlineLightMode onClick={toggleMode} style={{ cursor: "pointer" ,color:"gray"}}/>}
 
         </>
     )
