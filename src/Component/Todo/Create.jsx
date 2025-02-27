@@ -6,6 +6,8 @@ const Create = () => {
     const [data, setData] = useState({ name: "", age: "", email: "", date: "" })
     const { todo, setTodo, flag, setFlag, clearHanlder, id } = useContext(TodoContext)
 
+    const [error, setError] = useState({}) // Error state
+
     const lightDarkVal = JSON.parse(localStorage.getItem("isMode"))  // Retrieve its value for change color of text on light dark mode
 
 
@@ -14,16 +16,39 @@ const Create = () => {
         setData({ name: "", age: "", email: "", date: "" })
     }
 
+    // Validation form
+    const validate = (formData) => {
+
+        const errorData = {}
+
+        if (!formData.name) {
+            errorData.name = "Name is required!"
+        }
+        if (!formData.age) {
+            errorData.age = "Age is required!"
+        }
+        if (!formData.email) {
+            errorData.email = "Email is required!"
+        }
+        if (!formData.date) {
+            errorData.date = "Date is required!"
+        }
+
+        setError(errorData)
+        return errorData
+    }
 
 
     // Change Handler
     const changeHandler = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
+        setError((prevErrors) => ({ ...prevErrors, [e.target.name]: "" }))
     }
 
     // Add New User
     const addTodo = () => {
-        if (!data.name || !data.age || !data.email || !data.date) {
+        console.log(validate(data).name)
+        if (Object.keys(validate(data)).length) {
             alert("Please fill all details!")
             return
         }
@@ -42,7 +67,7 @@ const Create = () => {
 
     // Update Existing User
     const updateTodo = () => {
-        if (!data.name || !data.age || !data.email || !data.date) {
+        if (Object.keys(validate(data)).length) {
             alert("Please fill all details!")
             return
         }
@@ -84,9 +109,13 @@ const Create = () => {
 
                             <div className="gap-2 d-flex flex-column">
                                 <MDBInput name="name" type="text" label="Name" value={data.name} onChange={changeHandler} />
+                                <span className='text-danger'>{error.name}</span>
                                 <MDBInput name="age" type="text" label="Age" value={data.age} onChange={changeHandler} />
+                                <span className='text-danger'>{error.age}</span>
                                 <MDBInput name="email" type="email" label="Email" value={data.email} onChange={changeHandler} />
+                                <span className='text-danger'>{error.email}</span>
                                 <MDBInput name="date" type="date" label="Date" value={data.date} onChange={changeHandler} />
+                                <span className='text-danger'>{error.date}</span>
                             </div>
 
                             <div className="text-center mt-3">
