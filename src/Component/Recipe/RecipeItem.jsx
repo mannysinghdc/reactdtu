@@ -58,12 +58,12 @@ const RecipeItem = () => {
     console.log(recipe)
 
     return (
-        <>
+        <div style={{position:"relative"}}>
             {/* Back button */}
             <button
                 className="btn btn-info btn-sm m-4"
                 onClick={() => navigate(-1)}
-                style={{ transition: " all 0.4s ease-in-out" }}
+                style={{ transition: " all 0.4s ease-in-out", position:"absolute" }}
                 onMouseOver={(e) => (e.target.style.backgroundColor = "#17a2b8")}
                 onMouseOut={(e) => (e.target.style.backgroundColor = "")}>
                 Back
@@ -105,7 +105,7 @@ const RecipeItem = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
