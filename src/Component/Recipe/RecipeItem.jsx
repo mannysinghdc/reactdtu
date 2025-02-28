@@ -55,7 +55,6 @@ const RecipeItem = () => {
     // Use state if available, otherwise use post data
     const recipe = state || post
 
-    console.log(recipe)
 
     return (
         <div style={{position:"relative"}}>

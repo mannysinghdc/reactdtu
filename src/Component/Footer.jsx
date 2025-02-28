@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const Footer = ({mode}) => {
     return (
-        <footer className="text-white py-4 mt-3" style={{ backgroundColor: "#48a5a5" }}>
+        <footer className="text-white py-4 mt-3" style={{ backgroundColor: !mode? "#48a5a5" :"#061025"}}>
             <div className="container text-center text-md-start">
                 <div className="row">
                     {/* Left Section - Branding */}

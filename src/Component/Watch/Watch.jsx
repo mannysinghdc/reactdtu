@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"  // Digital Clock and select option for bg  
 
 
-const Watch = () => {
+const Watch = ({mode}) => {
     const [time, setTime] = useState(new Date())
     const [color, setColor] = useState("")
 
@@ -34,7 +34,7 @@ const Watch = () => {
     }, [])
 
     return (
-        <center className="mt-3" style={{ minHeight: "280px" }}>
+        <center className="mt-3" style={{ minHeight: "280px"  }}>
             <h2 style={{ fontStyle: "oblique" }}>Digital Clock</h2>
             <select value={color} onChange={handleChange}>
                 <option value="">--Select--</option>

@@ -6,10 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css"
 import './index.css'
 
 import App from './App.jsx'
-import Loader from './Component/Loader.jsx/Loader.jsx'
-import Weather from './Component/Weather/Weather.jsx'
-
-
+import Counter from './Component/Counter/Counter.jsx'
 
 // Lazy-loaded components
 const Home = lazy(() => import('./Component/Home.jsx'))
@@ -22,11 +19,11 @@ const Watch = lazy(() => import('./Component/Watch/Watch.jsx'))
 const SignUp = lazy(() => import('./Component/Login/SignUp.jsx'))
 const Login = lazy(() => import('./Component/Login/Login.jsx'))
 const NotPage = lazy(() => import('./Component/404.jsx'))
-const Protect = lazy(() => import('./Component/Login/Protect.jsx'))
 const TextCounter = lazy(() => import('./Component/TextCounter/TextCounter.jsx'))
 const Recipe = lazy(() => import('./Component/Recipe/Recipe.jsx'))
-const RecipeItem= lazy(()=>import('./Component/Recipe/RecipeItem.jsx')) 
-const Todo2= lazy(()=>import('./Component/NewTodo/Todo2.jsx')) 
+const RecipeItem = lazy(() => import('./Component/Recipe/RecipeItem.jsx'))
+const Todo2 = lazy(() => import('./Component/NewTodo/Todo2.jsx'))
+const Weather = lazy(() => import('./Component/Weather/Weather.jsx'))
 
 const router = createBrowserRouter([
   {
@@ -35,64 +32,68 @@ const router = createBrowserRouter([
     children: [
       {
         path: "*",
-        element: <Protect> <Suspense fallback={<Loader />}><NotPage /></Suspense></Protect>
+        element: <NotPage />
       },
       {
         path: "/",
-        element: <Protect> <Suspense fallback={<Loader />}><Home /></Suspense></Protect>
+        element: <Home />
       },
       {
         path: "color",
-        element: <Protect> <Suspense fallback={<Loader />}><Color /></Suspense></Protect>
+        element: <Color />
+      },
+      {
+        path: "counter",
+        element: <Counter/>
       },
       {
         path: "mixcolor",
-        element: <Protect> <Suspense fallback={<Loader />}><Rgb /></Suspense></Protect>
+        element: <Rgb />
       },
       {
         path: "signUp",
-        element: <Protect> <Suspense fallback={<Loader />}><SignUp /></Suspense></Protect>
+        element: <SignUp />
       },
       {
         path: "login",
-        element: <Protect> <Suspense fallback={<Loader />}><Login /></Suspense></Protect>
+        element: <Login />
       },
       {
         path: "image",
-        element: <Protect> <Suspense fallback={<Loader />}><Image /></Suspense></Protect>
+        element: <Image />
       },
       {
         path: "clock",
-        element: <Protect> <Suspense fallback={<Loader />}><Watch /></Suspense></Protect>
+        element: <Watch />
       },
       {
         path: "recipe",
-        element: <Protect> <Suspense fallback={<Loader />}><Recipe /></Suspense></Protect>
+        element: <Recipe />
       },
       {
         path: "recipe/:id",
-        element: <Protect> <Suspense fallback={<Loader />}><RecipeItem/></Suspense></Protect>
+        element: <RecipeItem />
       },
       {
         path: "todo",
-        element: <Protect> <Suspense fallback={<Loader />}><Todo /></Suspense></Protect>
+        element: <Todo />
       },
       {
         path: "todo2",
-        element: <Protect> <Suspense fallback={<Loader />}><Todo2 /></Suspense></Protect>
+        element: <Todo2 />
       },
 
       {
         path: "todofile",
-        element: <Protect> <Suspense fallback={<Loader />}><TodoJson /></Suspense></Protect>
+        element: <TodoJson />
       },
       {
         path: "textcounter",
-        element: <Protect> <Suspense fallback={<Loader />}><TextCounter /></Suspense></Protect>
+        element: <TextCounter />
       },
       {
         path: "weather",
-        element: <Protect> <Suspense fallback={<Loader />}><Weather /></Suspense></Protect>
+        element: <Weather />
       },
     ]
   }
@@ -100,6 +101,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-        <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </StrictMode>
 )
