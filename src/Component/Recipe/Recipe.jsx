@@ -76,7 +76,7 @@ const Recipe = () => {
                             <div className="row">
                                 {filterData.map((item) => (
                                     <div className="col-md-3 mb-4" key={item.id}>
-                                        <Link to={`/recipe/${item.id}`} style={{ textDecoration: "none" }} state={item}>
+                                        <Link to={`/recipes/${item.id}/${item.name}`} style={{ textDecoration: "none" }} state={item}>
                                             <Card item={item} />
                                         </Link>
                                     </div>

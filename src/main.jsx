@@ -67,11 +67,11 @@ const router = createBrowserRouter([
         element: <Watch />
       },
       {
-        path: "recipe",
+        path: "recipes",
         element: <Recipe />
       },
       {
-        path: "recipe/:id",
+        path:"/recipes/:id/:name?",
         element: <RecipeItem />
       },
       {
