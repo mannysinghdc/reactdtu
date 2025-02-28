@@ -3,9 +3,8 @@ import { MDBBtn } from "mdb-react-ui-kit"
 import { NavLink, useLocation, useNavigate } from "react-router"
 import Clock from "./Todo/Clock"
 import DarkLight from "./DarkLight/DarkLight"
-import { useEffect, useState } from "react"
 
-const Navbar = ({mode ,toggleMode}) => {
+const Navbar = ({ mode, toggleMode }) => {
     const dropProjectList = ["Clock", "Color", "Counter", "MixColor", "Image", "TextCounter", "Social", "Weather"]
     const NavList = ["Home", "Todo", "Todo2", "TodoFile", "Recipe"]
 
@@ -70,8 +69,10 @@ const Navbar = ({mode ,toggleMode}) => {
                                         </Link>
                                     ) : (
                                         <NavLink
-                                            className={`nav-link ${mode && "text-white"}`}
-                                            style={({ isActive }) => (isActive ? { color: "red" } : {})}
+                                            className="nav-link"
+                                            style={({ isActive }) => ({
+                                                color: isActive ? "red" : mode ? "white" : "gray", 
+                                            })}
                                             to={item === "Home" ? "/" : item.toLowerCase()}
                                         >
                                             {item}
@@ -98,8 +99,8 @@ const Navbar = ({mode ,toggleMode}) => {
                         </ul>
 
                         {/* Date & Time */}
-                        <div style={{ position: "relative", top: "8px", marginRight: "5px", color: mode? "white" :"gray" }}>
-                            <Clock/>
+                        <div style={{ position: "relative", top: "8px", marginRight: "5px", color: mode ? "white" : "gray" }}>
+                            <Clock />
                         </div>
 
                         {/* Dark & Light Mode */}
