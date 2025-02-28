@@ -64,7 +64,7 @@ const Navbar = ({ mode, toggleMode }) => {
                             {NavList.map((item, i) => (
                                 <li key={i} className="nav-item">
                                     {pathname === "/" ? (
-                                        <Link className="nav-link" to={item === "Home" ? "/" : item.toLowerCase()}>
+                                        <Link className={`nav-link ${mode && "text-white"}`} to={item === "Home" ? "/" : item.toLowerCase()}>
                                             {item}
                                         </Link>
                                     ) : (
