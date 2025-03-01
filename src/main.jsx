@@ -7,6 +7,8 @@ import './index.css'
 
 import App from './App.jsx'
 import Counter from './Component/Counter/Counter.jsx'
+import Country from './Component/Country/Country.jsx'
+import CountryDetail from './Component/Country/CountryDetail.jsx'
 
 // Lazy-loaded components
 const Home = lazy(() => import('./Component/Home.jsx'))
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
       {
         path: "counter",
         element: <Counter/>
+      },
+      {
+        path: "country",
+        element: <Country/>
+      },
+      {
+        path: "country/:name",
+        element: <CountryDetail/>
       },
       {
         path: "mixcolor",

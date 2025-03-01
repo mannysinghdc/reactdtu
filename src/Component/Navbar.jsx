@@ -6,7 +6,7 @@ import DarkLight from "./DarkLight/DarkLight"
 
 const Navbar = ({ mode, toggleMode }) => {
     const dropProjectList = ["Clock", "Color", "Counter", "MixColor", "Image", "TextCounter", "Social", "Weather"]
-    const NavList = ["Home", "Todo", "Todo2", "TodoFile", "Recipes"]
+    const NavList = ["Home","Country", "Todo", "Todo2", "TodoFile", "Recipes"]
 
     const navigate = useNavigate()
     const { pathname } = useLocation()

@@ -29,7 +29,7 @@ const Recipe = () => {
         getFetch()
     }, [])
 
-    //Filter daat
+    //Filter data by use searching
     const filterData = data.filter((item) =>
         item.name.toLowerCase().includes(text.toLowerCase())
     )
@@ -61,7 +61,7 @@ const Recipe = () => {
                         <div style={{ position: "absolute", top: "20%", left: "50%", zIndex: 10 }}>
                             <Loader />
                         </div>
-
+                        {/*Shimmer Effect */}
                         <div className="row mt-4">
                             {Array(8).fill().map((_, index) => (
                                 <div className="col-md-3 mb-4" key={index}>
@@ -74,6 +74,7 @@ const Recipe = () => {
                     : (
                         <div className="container">
                             <div className="row">
+                                {/* Mapping*/}
                                 {filterData.map((item) => (
                                     <div className="col-md-3 mb-4" key={item.id}>
                                         <Link to={`/recipes/${item.id}/${item.name}`} style={{ textDecoration: "none" }} state={item}>

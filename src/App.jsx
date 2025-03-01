@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom" // Protected routes and suspense loader and dark/light mode
+import { Outlet } from "react-router-dom" // Protected routes and suspense loader and dark/light mode & Lefting up state
 import Navbar from "./Component/Navbar"
 import Footer from "./Component/Footer"
 import { Suspense, useEffect, useState } from "react"
