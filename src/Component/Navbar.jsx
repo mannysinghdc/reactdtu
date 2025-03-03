@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
 import { MDBBtn } from "mdb-react-ui-kit"
-import { NavLink, useLocation, useNavigate } from "react-router"
+import { NavLink, useLocation, useNavigate ,Link} from "react-router"
 import Clock from "./Todo/Clock"
 import DarkLight from "./DarkLight/DarkLight"
+import SearchInput from "./SearchInput"
 
 const Navbar = ({ mode, toggleMode }) => {
     const dropProjectList = ["Clock", "Color", "Counter", "MixColor", "Image", "TextCounter", "Social", "Weather"]
@@ -97,6 +97,8 @@ const Navbar = ({ mode, toggleMode }) => {
                                 </ul>
                             </li>
                         </ul>
+
+                        <SearchInput/>
 
                         {/* Date & Time */}
                         <div style={{ position: "relative", top: "8px", marginRight: "5px", color: mode ? "white" : "gray" }}>
