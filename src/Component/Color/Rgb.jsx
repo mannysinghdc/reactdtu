@@ -46,8 +46,8 @@ const Rgb = () => {
     }, [])
 
     return (
-        <center>
-            <h2 className="my-4">RGB Color Mixer</h2>
+        <center className="mb-3">
+            <h2 className="my-4 ">RGB Color Mixer</h2>
             <div
                 style={{
                     backgroundColor: `rgb(${r},${g},${b})`,

@@ -6,11 +6,45 @@ import Search from "./Search"
 
 
 const Todo = () => {
+    const cardSTyle = {
+        position: "absolute",
+        top: "10%",
+        left: "15%",
+        height: "70vh",
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+        overflow: "auto",
+        scrollbarWidth: "none",
+        padding: "20px",
+        borderRadius: "10px",
+
+    }
     return (
         <TodoContextProvider>
-            <Create />
-            <Search/>
-            <Read />
+            <div style={{ width: "auto", height: "auto", overflow: "hidden", position: "relative" }}>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        overflow: "hidden"
+                    }}>
+                    <source src='vedio.mp4' type="video/mp4" />
+                </video>
+                <div style={cardSTyle}>
+                    <div>
+                        <Create />
+                        <Search />
+                        <Read />
+                    </div>
+
+                </div>
+
+            </div>
+
         </TodoContextProvider>
     )
 }
