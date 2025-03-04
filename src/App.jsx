@@ -22,10 +22,10 @@ const App = () => {
       <Navbar mode={mode} toggleMode={toggleMode} />
       <Suspense fallback={<Loader />}>
         <Protect>
-          <Outlet />
+          <Outlet context={{ mode }} />
         </Protect>
       </Suspense>
-      <Footer mode={mode}/>
+      <Footer mode={mode} />
 
     </>
   )

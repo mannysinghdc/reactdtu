@@ -1,11 +1,14 @@
 
-import TodoContextProvider from "../../store/Todo-Item"  // Todo and it use context api 
+import { useOutletContext } from "react-router-dom"
+import TodoContextProvider from "../../store/Todo-Item"  // Todo and it use context api and outlet context and vedio key features
 import Create from "./Create"
 import Read from "./Read"
 import Search from "./Search"
 
 
 const Todo = () => {
+    const { mode } = useOutletContext()  // react router hook 
+
     const cardSTyle = {
         position: "absolute",
         top: "10%",
@@ -23,6 +26,7 @@ const Todo = () => {
         <TodoContextProvider>
             <div style={{ width: "auto", height: "auto", overflow: "hidden", position: "relative" }}>
                 <video
+                    key={mode}
                     autoPlay
                     loop
                     muted
@@ -32,15 +36,17 @@ const Todo = () => {
                         height: "100%",
                         objectFit: "cover"
                     }}>
-                    <source src='vedio.mp4' type="video/mp4" />
+                    {/* vedio toggle background chage on toggle mode*/}
+                    {
+                        !mode && <source src='vedio.mp4' type="video/mp4" />
+                    }
+
+
                 </video>
                 <div style={cardSTyle}>
-                    <div>
-                        <Create />
-                        <Search />
-                        <Read />
-                    </div>
-
+                    <Create />
+                    <Search />
+                    <Read />
                 </div>
 
             </div>
