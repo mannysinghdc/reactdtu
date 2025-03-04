@@ -16,6 +16,7 @@ const Todo = () => {
         scrollbarWidth: "none",
         padding: "20px",
         borderRadius: "10px",
+        width: "70vw"
 
     }
     return (
@@ -29,8 +30,7 @@ const Todo = () => {
                     style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: "cover",
-                        overflow: "hidden"
+                        objectFit: "cover"
                     }}>
                     <source src='vedio.mp4' type="video/mp4" />
                 </video>
