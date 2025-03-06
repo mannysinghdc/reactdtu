@@ -27,6 +27,8 @@ const App = () => {
       </Suspense>
       <Footer mode={mode} />
 
+      
+
     </>
   )
 }

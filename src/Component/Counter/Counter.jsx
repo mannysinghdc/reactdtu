@@ -27,6 +27,7 @@ const Counter = () => {
         width: "50%",
         margin: "4rem auto",
         minHeight: "200px",
+         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
         borderRadius: "10px",
         boxSizing: "border-box", // Ensures padding/borders don't change the box size
         transition: "all 0.3s ease-in-out", // Smooth transition effect
