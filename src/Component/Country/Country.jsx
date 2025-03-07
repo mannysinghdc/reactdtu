@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import CountryCard from './CountryCard'
-import Loader from '../Loader.jsx/Loader'
-import { MDBInput } from 'mdb-react-ui-kit'
 import ShimmerCard from '../Recipe/ShimmerCard'
+import SearchInput from './SearchInput'
 
 
 const Country = () => {
@@ -18,7 +17,7 @@ const Country = () => {
     }, [])
 
     const filteredItems = countriesData.filter(item =>
-        item.name.common.toLowerCase().includes(query.toLowerCase())
+        item.name.common.toLowerCase().includes(query.toLowerCase()) || item.region.toLowerCase().includes(query.toLowerCase())
     )
 
     //Shimer effect
@@ -42,9 +41,8 @@ const Country = () => {
                     : (
                         <div className="container">
                             <h2 className='text-center my-4'>Country App</h2 >
-                            <div className='w-25'>
-                                <MDBInput className='mb-4' type='text' label='Search Counrty' value={query} onChange={(e) => setQuery(e.target.value)} />
-                            </div>
+                            <SearchInput query={query} setQuery={setQuery} />
+                            <hr />
 
                             <div className="row">
                                 {

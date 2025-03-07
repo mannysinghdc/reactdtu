@@ -6,7 +6,7 @@ import Button from "./Button"
 const Home = () => {
   const [data, setData] = useState(null)
 
-
+  // Github api 
   useEffect(() => {
     axios.get("https://api.github.com/users/mannysinghdc")
       .then((res) => {
@@ -16,6 +16,7 @@ const Home = () => {
   }, [])
 
   return (
+    <>
     <div className="container-fluid" style={{ position: "relative" }}>
       {/* Background Image */}
       <img src="home.jpg" alt="background" style={{ height: "89.8vh", width: "100%", objectFit: "cover" }} />
@@ -25,18 +26,19 @@ const Home = () => {
       <div className={style.over_lay}>
         <h1>About Our Website!</h1>
         {/* Github image */}
-          {data && <img src={data} alt="image" style={{ borderRadius: "50%", width: "250px" }} />} 
+        {data && <img src={data} alt="image" style={{ borderRadius: "50%", width: "250px" }} />}
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum commodi repellat autem magni possimus
           reprehenderit laudantium distinctio, illum est suscipit qui obcaecati placeat repudiandae esse eveniet
           molestias ullam.
-        </p> 
-        <Button/>
-
+        </p>
+        <Button />
       </div>
     </div>
-  );
+
+    </>
+  )
 }
 
-export default Home;
+export default Home
 
